@@ -1,1 +1,45 @@
-<p>login works!</p>
+<section class="bg-main-light shadow p-2 my-4 rounded-4">
+ <div class="">
+    <form [formGroup]="LoginForm" class="my-3" (ngSubmit)="handleSubmit()">
+        <h1 class="text-main">Login Now</h1>
+       
+        <div>
+            <label for="email" class="form-label mt-2">E-mail:</label>
+            <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{
+               'is-valid': !LoginForm.get('email')?.errors && (LoginForm.get('email')?.touched || LoginForm.get('email')?.dirty),
+               'is-invalid': LoginForm.get('email')?.errors && (LoginForm.get('email')?.touched || LoginForm.get('email')?.dirty )
+
+            }">
+              @if (LoginForm.get('email')?.touched ||LoginForm.get('email')?.dirty ) {
+                   @if (LoginForm.get('email')?.hasError('required')) {
+                        <div class="alert alert-danger">Email Is Required</div>
+                 }
+                   @else if (LoginForm.get('email')?.hasError('email')) {
+                        <div class="alert alert-danger">Enter Valid Email</div>
+                 }
+            }
+        </div>
+       
+        <div>
+            <label for="password" class="form-label mt-2">Password:</label>
+            <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{
+               'is-valid': !LoginForm.get('password')?.errors && (LoginForm.get('password')?.touched || LoginForm.get('password')?.dirty),
+               'is-invalid': LoginForm.get('password')?.errors && (LoginForm.get('password')?.touched || LoginForm.get('password')?.dirty )
+
+            }">
+              @if (LoginForm.get('password')?.touched || LoginForm.get('password')?.dirty ) {
+                   @if (LoginForm.get('password')?.hasError('required')) {
+                        <div class="alert alert-danger">Password Is Required</div>
+                 }
+            }
+        </div>
+      
+        <button class="btn-main my-2 p-2" type="submit">Login 
+        @if(isLoading){  <span><i class="fas fa-spin fa-spinner "></i></span>}
+        </button>
+           @if (errormsg) {
+                        <div class="alert alert-danger mt-2">{{errormsg}}</div>
+        }
+    </form>
+ </div>
+</section>

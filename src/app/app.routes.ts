@@ -9,14 +9,16 @@ import { ProductsComponent } from './Components/products/products.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { BrandsComponent } from './Components/brands/brands.component';
+import { logedGuard } from './Core/Guards/Logged/loged.guard';
+import { authGuard } from './Core/Guards/Auth/auth.guard';
 
 export const routes: Routes = [
-    {path:'',component:AuthlayoutComponent,children:[
+    {path:'',component:AuthlayoutComponent,canActivate:[logedGuard] ,children:[
         {path:'',redirectTo:'login',pathMatch:'full'},
         {path:'login',component:LoginComponent},
         {path:'register',component:RegisterComponent}
     ]},
-    {path:'',component:BlanklayoutComponent,children:[
+    {path:'',component:BlanklayoutComponent,canActivate:[authGuard],children:[
         {path:'',redirectTo:'home',pathMatch:'full'},
         {path:'home',component:HomeComponent},
         {path:'products',component:ProductsComponent},
