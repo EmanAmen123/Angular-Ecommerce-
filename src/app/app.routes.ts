@@ -11,12 +11,17 @@ import { CartComponent } from './Components/cart/cart.component';
 import { BrandsComponent } from './Components/brands/brands.component';
 import { logedGuard } from './Core/Guards/Logged/loged.guard';
 import { authGuard } from './Core/Guards/Auth/auth.guard';
+import { ProdDetailsComponent } from './Components/prod-details/prod-details.component';
+import { ForgetPassComponent } from './Components/forget-pass/forget-pass.component';
+import { UserOrderComponent } from './Components/user-order/user-order.component';
+import { AllOrdersComponent } from './Components/all-orders/all-orders.component';
 
 export const routes: Routes = [
     {path:'',component:AuthlayoutComponent,canActivate:[logedGuard] ,children:[
         {path:'',redirectTo:'login',pathMatch:'full'},
         {path:'login',component:LoginComponent},
-        {path:'register',component:RegisterComponent}
+        {path:'register',component:RegisterComponent},
+        {path:'forgetpassword',component:ForgetPassComponent}
     ]},
     {path:'',component:BlanklayoutComponent,canActivate:[authGuard],children:[
         {path:'',redirectTo:'home',pathMatch:'full'},
@@ -25,6 +30,9 @@ export const routes: Routes = [
         {path:'categories',component:CategoriesComponent},
         {path:'cart',component:CartComponent},
         {path:'brands',component:BrandsComponent},
+        {path:'details/:prodID',component:ProdDetailsComponent},
+        {path:'allorders',component:AllOrdersComponent},
+        {path:'order/:cartId',component:UserOrderComponent},
 
     ]},
     {path:'**',component:NotfoundComponent}

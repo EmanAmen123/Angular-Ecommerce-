@@ -33,10 +33,14 @@
                  }
             }
         </div>
-      
-        <button class="btn-main my-2 p-2" type="submit">Login 
+        <div class="d-flex justify-content-end gap-3 align-items-center">
+         <a [routerLink]="['/forgetpassword']"  class="link-primary">Forget Password?</a>
+          <button class="btn-main my-2 p-2" type="submit">Login 
         @if(isLoading){  <span><i class="fas fa-spin fa-spinner "></i></span>}
         </button>
+
+        </div>
+       
            @if (errormsg) {
                         <div class="alert alert-danger mt-2">{{errormsg}}</div>
         }

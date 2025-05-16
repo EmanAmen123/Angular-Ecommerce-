@@ -1,1 +1,29 @@
-<p>products works!</p>
+<div class="row g-3 my-2">
+    @for (product of products; track product.id) {
+         <div class="col-md-2">
+         <div class="product p-2">
+          <div [routerLink]="['/details',product.id]"  >
+             <img [src]="product.imageCover" class="w-100" [alt]="product.title"/>
+              <h3 class="small text-main">{{product.category.name}}</h3>
+              <h4 class="h6">{{product.title.split(" ",2).join(" ")}}</h4>
+              <div class="d-flex justify-content-between ">
+                <span>{{product.price}} Egp</span>
+                <div>
+                    @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track $index) {
+                    <span><i class="fas fa-star rating-color"></i></span>
+                    }
+                    @if(product.ratingsAverage%1 !==0){
+                      <span><i class="fa-regular fa-star-half-stroke rating-color"></i></span>
+                    }
+                    <span class="text-muted">{{product.ratingsAverage}}</span>
+                </div>
+              </div>
+          </div>
+             
+        <button class="btn-main w-100 m-1 p-2" (click)="addToCart(product.id)">Add To Cart</button>
+
+        </div>
+    </div>
+    }
+   
+</div>

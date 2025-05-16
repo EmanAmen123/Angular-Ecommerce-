@@ -15,9 +15,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="ative-link" [routerLink]="['/products']" >Products</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="ative-link" [routerLink]="['/cart']" >Cart</a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="ative-link" [routerLink]="['/categories']" >Categories</a>
           </li>
@@ -28,7 +26,11 @@
           
         </ul>
         <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
-         
+            <li class="nav-item">
+            <a class="nav-link" routerLinkActive="ative-link" [routerLink]="['/cart']" >
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link cursor-pointer" >
               <i class="fa-brands fa-facebook"></i>
